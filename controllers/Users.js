@@ -17,11 +17,12 @@ export const getUsers = async (req,res) => {
 
 export const register = async(req,res) => {
   const {email,password} = req.body;
-
+  console.log("help");
   const salt = await bcrypt.genSalt();
   const hash = await bcrypt.hash(password,salt);
 
   try {
+    console.log("coming in try ");
     await Users.create({
       email:email.toLowerCase(),
       password:hash
